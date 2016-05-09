@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MovieApp</string>
+    <string name="mark_as_favourite">MARK AS FAVORITE</string>
+</resources>
