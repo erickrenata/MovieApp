@@ -1,6 +1,8 @@
 package com.movie.movieapp.presenter;
 
 import com.movie.movieapp.model.Movie;
+import com.movie.movieapp.model.MovieReviews;
+import com.movie.movieapp.model.MovieTrailer;
 import com.movie.movieapp.network.ApiService;
 import com.movie.movieapp.network.NetworkModule;
 import com.movie.movieapp.utils.Constant;
@@ -24,6 +26,20 @@ public class UserPresenter {
         NetworkModule networkModule = new NetworkModule();
         ApiService apiService = networkModule.provideRetrofit().create(ApiService.class);
         return apiService.getMovieTopRated(Constant.API_KEY)
+                .subscribeOn(Schedulers.computation());
+    }
+
+    public Observable<MovieTrailer> movieTrailer(int id) {
+        NetworkModule networkModule = new NetworkModule();
+        ApiService apiService = networkModule.provideRetrofit().create(ApiService.class);
+        return apiService.getMovieTrailer(id,Constant.API_KEY)
+                .subscribeOn(Schedulers.computation());
+    }
+
+    public Observable<MovieReviews> movieReviews(int id) {
+        NetworkModule networkModule = new NetworkModule();
+        ApiService apiService = networkModule.provideRetrofit().create(ApiService.class);
+        return apiService.getMovieReviews(id,Constant.API_KEY)
                 .subscribeOn(Schedulers.computation());
     }
 }

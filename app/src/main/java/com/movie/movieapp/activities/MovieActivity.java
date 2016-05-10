@@ -21,7 +21,6 @@ public class MovieActivity extends AppCompatActivity {
     MovieAdapter movieAdapter;
     @Bind(R.id.rvMovieList)
     RecyclerView rvMovieList;
-    String category;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +32,14 @@ public class MovieActivity extends AppCompatActivity {
         getMovieTopRated();
 
         movieAdapter = new MovieAdapter(this);
-//        movieAdapter.refresh(category);
         rvMovieList.setLayoutManager(new GridLayoutManager(this, 2));
+        movieAdapter.refresh("Popular");
         rvMovieList.setAdapter(movieAdapter);
 
+        try{
+            movieAdapter.refresh(Hawk.get("Category"));
+        }catch (Exception e){
+        }
     }
 
     @Override
@@ -49,15 +52,13 @@ public class MovieActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_popular) {
-            category = "Popular";
-            movieAdapter.refresh(category);
-            setTitle("Pop Movies");
+            Hawk.put("Category","Popular");
+            movieAdapter.refresh(Hawk.get("Category"));
             return true;
         }
         if (id == R.id.action_top_rated) {
-            category = "Top Rated";
-            movieAdapter.refresh(category);
-            setTitle("Top Rated Movies");
+            Hawk.put("Category","Top Rated");
+            movieAdapter.refresh(Hawk.get("Category"));
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -71,8 +72,7 @@ public class MovieActivity extends AppCompatActivity {
                 }, throwable -> throwable.printStackTrace());
     }
 
-    public void getMovieTopRated() {
-        System.out.println("HALO PUKON");
+    public void getMovieTopRated() {;
         UserPresenter userPresenter = new UserPresenter();
         userPresenter.movieTopRated()
                 .subscribe(movieTopRated -> {

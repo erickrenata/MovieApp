@@ -102,27 +102,31 @@
             android:layout_marginTop="5dp"
             android:textSize="20sp"
             android:textColor="#848484"/>
-        <LinearLayout
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvTrailer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="wrap_content"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.7dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="15dp">
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:background="#000"
-                android:layout_marginRight="50dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Trailer 1"
-                android:textSize="14sp"
-                android:layout_gravity="center_vertical"
-                android:textColor="#848484"/>
-        </LinearLayout>
-
-
+            android:layout_marginBottom="15dp"
+            android:background="@android:color/black"
+            android:layout_marginTop="15dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reviews:"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:textSize="20sp"
+            android:textColor="#848484"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvReview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
 

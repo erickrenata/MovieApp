@@ -43,8 +43,10 @@ public class MovieAdapter  extends RecyclerView.Adapter<MovieAdapter.MovieHolder
         try{
             if(category.equals("Popular")){
                 movie  = Hawk.get("MoviePopular");
+                context.setTitle("Pop Movies");
             }else if(category.equals("Top Rated")){
                 movie  = Hawk.get("MovieTopRated");
+                context.setTitle("Top Rated Movies");
             }
             this.notifyDataSetChanged();
         }catch (Exception e){}
